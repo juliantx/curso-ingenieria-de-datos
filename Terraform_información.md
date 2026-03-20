@@ -35,3 +35,16 @@ https://developer.hashicorp.com/terraform/install
 ### Windows:
 
 Agregar al Path: C:\Terraform o donde tenga el ejecutable
+
+# 🧱 Estructura básica de Terraform
+
+Terraform utiliza archivos con extensión `.tf` para definir la infraestructura.
+
+```bash
+project/
+ ├── main.tf
+ ├── variables.tf
+ ├── outputs.tf
+ └── terraform.tfvars
+```
+
