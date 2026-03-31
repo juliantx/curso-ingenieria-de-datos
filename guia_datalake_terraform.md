@@ -331,12 +331,52 @@ S3 → almacena datos
 
 # 10. Despliegue
 
+## Ubícate en el entorno correcto
+
+Debes pararte en:
+
 ```bash
-terraform init
-terraform plan
-terraform apply
+cd terraform/envs/dev
 ```
 
+###Inicializar Terraform
+```bash
+terraform init
+```
+
+###Formatear código (buena práctica)
+```bash
+terraform fmt -recursive
+```
+
+###Validar configuración
+```bash
+terraform validate
+```
+Si algo está mal, aquí lo detectas antes de romper nada.
+
+###Ver el plan
+```bash
+terraform plan -var-file="dev.tfvars"
+```
+Aquí debes ver:
+
+- 3 buckets (bronze, silver, gold)
+- IAM role
+- Glue job
+- CloudWatch
+- Otros módulos definidos
+
+###Aplicar infraestructura
+```bash
+terraform apply -var-file="dev.tfvars"
+```
+Te pedira confiramción (yes)
+
+###Ver outputs
+```bash
+terraform output
+```
 ---
 
 # 11. Errores comunes
