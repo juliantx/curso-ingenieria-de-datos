@@ -1,5 +1,4 @@
-# Guía Completa: Data Lake en AWS con Terraform (Nivel Detallado)
-
+# Data Lake Simple con Terraform
 ---
 
 # 1. Arquitectura General
@@ -402,20 +401,6 @@ aws s3 cp scripts/etl_sales.py s3://TU-BUCKET-BRONZE/scripts/
 
 ---
 
-# 12. Mejores prácticas
-
-- Separar módulos
-- Usar variables
-- Versionar infraestructura
-- Monitorear siempre
-
----
-
-# CONCLUSIÓN
-
-Este Data Lake sigue arquitectura moderna:
-- Modular
-- Escalable
 - Seguro
 - Optimizado en costos
 
