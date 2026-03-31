@@ -1,144 +1,335 @@
-# Guía: Data Lake en AWS con Terraform
-
-## 1. Introducción
-Esta guía explica cómo desplegar un Data Lake en AWS usando Terraform con una arquitectura basada en capas:
-- **Bronze**: datos crudos
-- **Silver**: datos procesados
-- **Gold**: datos agregados
-
-Incluye:
-- S3 (Data Lake)
-- IAM (roles y políticas)
-- AWS Glue (ETL)
-- CloudWatch (monitoreo)
+# Guía Completa: Data Lake en AWS con Terraform (Nivel Detallado)
 
 ---
 
-## 2. Estructura del Proyecto
+# 1. Arquitectura General
 
 ```
-modules/
-  s3_lake/
-  iam/
-  glue/
-  cloudwatch/
-envs/
-  dev/
+        +-------------------+
+        |   Fuente Datos    |
+        +--------+----------+
+                 |
+                 v
+        +-------------------+
+        |   S3 Bronze       |  (datos crudos)
+        +--------+----------+
+                 |
+                 v
+        +-------------------+
+        |   AWS Glue Job    |  (ETL)
+        +--------+----------+
+                 |
+                 v
+        +-------------------+
+        |   S3 Silver       |  (datos limpios)
+        +--------+----------+
+                 |
+                 v
+        +-------------------+
+        |   S3 Gold         |  (agregados)
+        +-------------------+
+
+        +-------------------+
+        | CloudWatch        |
+        | Logs + Alarmas    |
+        +-------------------+
+
+        +-------------------+
+        | IAM Roles         |
+        +-------------------+
 ```
 
 ---
 
-## 3. Módulo S3 (Data Lake)
+# 2. Buckets: Bronze, Silver, Gold
 
-### main.tf
+## Archivo: modules/s3_lake/main.tf
+
 ```hcl
 resource "aws_s3_bucket" "this" {
   bucket = "${var.project}-${var.env}-${var.bucket_name}-${var.account_id}"
-  tags = var.tags
+  tags   = var.tags
 }
 ```
 
-### Explicación
-- Crea buckets dinámicos por entorno
-- Usa naming estándar: `project-env-layer-account`
+### Línea por línea
 
-### Seguridad
-```hcl
-sse_algorithm = "AES256"
+- `resource "aws_s3_bucket"` → define un bucket
+- `"this"` → nombre interno del recurso
+- `bucket =` → nombre dinámico del bucket
+- `${var.project}` → nombre del proyecto
+- `${var.env}` → ambiente (dev, prod)
+- `${var.bucket_name}` → bronze/silver/gold
+- `${var.account_id}` → evita duplicados globales
+
+👉 Resultado:
 ```
-- Cifrado en reposo habilitado
+datalake-dev-bronze-123456789
+```
 
-### Lifecycle
+---
+
+## Encriptación
+
+```hcl
+resource "aws_s3_bucket_server_side_encryption_configuration" "encryption" {
+```
+
+- Habilita cifrado en reposo
+- `AES256` → estándar AWS
+
+---
+
+## Lifecycle
+
 ```hcl
 transition {
-  days = 180
+  days          = 180
   storage_class = "STANDARD_IA"
 }
 ```
-- Reduce costos moviendo datos antiguos
+
+- Después de 180 días → más barato
+- Optimización de costos
 
 ---
 
-## 4. Módulo IAM
+# 3. Flujo de Datos entre Buckets
 
-### Rol de Glue
-Permite que AWS Glue ejecute jobs.
-
-### Políticas:
-- Lectura en Bronze
-- Escritura en Silver
-- Acceso a bucket temporal
-- Logs en CloudWatch
-
-Ejemplo:
-```hcl
-Action = ["s3:GetObject", "s3:ListBucket"]
+```
+Bronze (raw CSV)
+   ↓
+Glue Job
+   ↓
+Silver (parquet limpio)
+   ↓
+(agregaciones futuras)
+   ↓
+Gold
 ```
 
 ---
 
-## 5. Módulo Glue
+# 4. Glue Job
 
-### main.tf
+## Archivo: modules/glue/main.tf
+
 ```hcl
 resource "aws_glue_job" "sales_etl" {
-  name     = "${var.project}-${var.env}-sales-etl"
-  role_arn = var.glue_role_arn
-}
 ```
 
 ### Explicación
-- Ejecuta ETL desde Bronze → Silver
-- Usa script en S3
 
-Parámetros:
-```hcl
-"--input_path"
-"--output_path"
-```
+- Define un job ETL administrado
+- Usa Spark por debajo
 
 ---
 
-## 6. Módulo CloudWatch
+### Parámetros clave
 
-Incluye:
-- Log Group
-- Alarmas
-- Dashboard
+```hcl
+role_arn = var.glue_role_arn
+```
+
+- Conecta con IAM
+- Permisos para S3 y logs
+
+---
+
+```hcl
+script_location = var.script_location
+```
+
+- Script ETL almacenado en S3
+
+---
+
+```hcl
+"--input_path"  = "s3://${var.bronze_bucket}/sales_small.csv"
+"--output_path" = "s3://${var.silver_bucket}/sales/"
+```
+
+👉 Aquí ocurre la conexión:
+
+- Entrada → Bronze
+- Salida → Silver
+
+---
+
+### Workers
+
+```hcl
+worker_type       = "G.1X"
+number_of_workers = 2
+```
+
+- Define capacidad
+- Controla costo
+
+---
+
+# 5. CloudWatch
+
+## Archivo: modules/cloudwatch/main.tf
+
+### Log Group
+
+```hcl
+name = "/aws-glue/jobs/${var.project}-${var.env}"
+```
+
+- Guarda logs del job
+
+---
 
 ### Alarma
+
 ```hcl
 metric_name = "glue.driver.aggregate.numFailedTasks"
+threshold   = 0
+```
+
+- Si hay fallos → alerta
+
+---
+
+### Dashboard
+
+- Métricas de éxito vs fallos
+- Visualización operativa
+
+---
+
+# 6. IAM (Seguridad)
+
+## Archivo: modules/iam/main.tf
+
+---
+
+## Rol
+
+```hcl
+resource "aws_iam_role" "glue_role"
+```
+
+- Define identidad de Glue
+
+---
+
+## Trust Policy
+
+```hcl
+Service = "glue.amazonaws.com"
+```
+
+- Permite a Glue asumir el rol
+
+---
+
+## Política S3
+
+```hcl
+Action = [
+  "s3:GetObject",
+  "s3:ListBucket"
+]
+```
+
+- Leer Bronze
+
+```hcl
+"s3:PutObject"
+```
+
+- Escribir en Silver
+
+---
+
+## Política Logs
+
+```hcl
+logs:CreateLogGroup
+logs:PutLogEvents
+```
+
+- Permite escribir logs
+
+---
+
+## Attachments
+
+```hcl
+aws_iam_role_policy_attachment
+```
+
+- Une políticas al rol
+
+---
+
+# 7. Variables y Conexiones
+
+## Ejemplo
+
+```hcl
+variable "project" {}
 ```
 
 ---
 
-## 7. Variables
+## Flujo de variables
+
+```
+env/dev → variables.tf
+   ↓
+main.tf (root)
+   ↓
+modules (inputs)
+   ↓
+resources
+```
+
+---
+
+## Outputs
 
 Ejemplo:
+
 ```hcl
-variable "project" {
-  type = string
-}
+output "glue_role_arn"
 ```
 
-Se usan para:
-- Reutilización
-- Multi-entorno
-- Buenas prácticas
+👉 Se usa en:
+
+```
+module.iam → output
+module.glue → input
+```
 
 ---
 
-## 8. Flujo Completo
+# 8. Cómo todo se conecta
 
-1. Datos llegan a Bronze (S3)
-2. Glue procesa → Silver
-3. CloudWatch monitorea
-4. IAM controla accesos
+```
+IAM Role → Glue Job
+Glue Job → S3 Bronze/Silver
+CloudWatch → monitorea Glue
+S3 → almacena datos
+```
 
 ---
 
-## 9. Despliegue
+# 9. Flujo completo
+
+1. Se crean buckets
+2. Se crea IAM role
+3. Glue usa ese rol
+4. Job lee Bronze
+5. Escribe Silver
+6. CloudWatch monitorea
+
+---
+
+# 10. Despliegue
 
 ```bash
 terraform init
@@ -148,15 +339,28 @@ terraform apply
 
 ---
 
-## 10. Buenas Prácticas
+# 11. Errores comunes
 
-- Usar módulos reutilizables
-- Separar entornos
-- Habilitar cifrado
-- Monitorear con CloudWatch
+- Permisos IAM insuficientes
+- Bucket names duplicados
+- Script Glue mal ubicado
 
 ---
 
-## 11. Conclusión
+# 12. Mejores prácticas
 
-Este proyecto implementa un Data Lake moderno siguiendo buenas prácticas de AWS y Terraform.
+- Separar módulos
+- Usar variables
+- Versionar infraestructura
+- Monitorear siempre
+
+---
+
+# CONCLUSIÓN
+
+Este Data Lake sigue arquitectura moderna:
+- Modular
+- Escalable
+- Seguro
+- Optimizado en costos
+
