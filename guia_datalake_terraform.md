@@ -339,23 +339,23 @@ Debes pararte en:
 cd terraform/envs/dev
 ```
 
-###Inicializar Terraform
+### Inicializar Terraform
 ```bash
 terraform init
 ```
 
-###Formatear código (buena práctica)
+### Formatear código (buena práctica)
 ```bash
 terraform fmt -recursive
 ```
 
-###Validar configuración
+### Validar configuración
 ```bash
 terraform validate
 ```
 Si algo está mal, aquí lo detectas antes de romper nada.
 
-###Ver el plan
+### Ver el plan
 ```bash
 terraform plan -var-file="dev.tfvars"
 ```
@@ -367,16 +367,31 @@ Aquí debes ver:
 - CloudWatch
 - Otros módulos definidos
 
-###Aplicar infraestructura
+### Aplicar infraestructura
 ```bash
 terraform apply -var-file="dev.tfvars"
 ```
 Te pedira confiramción (yes)
 
-###Ver outputs
+### Ver outputs
 ```bash
 terraform output
 ```
+
+### Subir archivos necesarios (MUY IMPORTANTE)
+
+Terraform NO sube archivos automáticamente, así que debes hacerlo manualmente:
+
+- Subir CSV (datos de entrada)
+```bash
+aws s3 cp sales_small.csv s3://TU-BUCKET-BRONZE/
+```
+- Subir script Glue
+```bash
+aws s3 cp scripts/etl_sales.py s3://TU-BUCKET-BRONZE/scripts/
+```
+
+
 ---
 
 # 11. Errores comunes
