@@ -1,0 +1,101 @@
+order_id,date,customer_id,city,country,product_category,product_name,price,quantity,discount,total_amount,payment_method
+1,2025-10-12,7,East Adamchester,Colombia,Home,Table,811.41,4,0.2,2596.51,Debit Card
+2,2025-05-28,39,Port Charles,Colombia,Home,Table,182.62,1,0.2,146.1,PSE
+3,2026-01-10,28,North Katherineville,Colombia,Electronics,Laptop,937.36,1,0.1,843.62,PSE
+4,2025-07-06,31,South Gabriellaview,Colombia,Clothing,Shoes,737.86,2,0.1,1328.15,Debit Card
+5,2025-09-14,16,Port Lisaberg,Colombia,Electronics,Phone,878.57,3,0.1,2372.14,Debit Card
+6,2025-08-08,49,Christopherbury,Colombia,Clothing,Shirt,819.05,1,0.2,655.24,PSE
+7,2025-06-28,12,Jennifershire,Colombia,Electronics,Laptop,249.43,4,0.05,947.83,Credit Card
+8,2025-09-15,9,Kimshire,Colombia,Electronics,Laptop,562.71,4,0.1,2025.76,Debit Card
+9,2025-10-05,16,Bentleyshire,Colombia,Clothing,Shoes,286.08,3,0.2,686.59,Credit Card
+10,2025-10-17,33,West Robin,Colombia,Home,Table,898.14,4,0.05,3412.93,Credit Card
+11,2025-06-09,8,Mendezbury,Colombia,Clothing,Shoes,645.61,3,0.0,1936.83,PSE
+12,2025-12-04,35,East Tylerchester,Colombia,Electronics,Laptop,787.49,4,0.2,2519.97,Debit Card
+13,2025-12-27,25,Mooreshire,Colombia,Clothing,Shoes,378.56,1,0.1,340.7,Cash
+14,2025-11-18,18,Port Edward,Colombia,Electronics,Laptop,15.01,4,0.05,57.04,Cash
+15,2026-01-15,41,Port Stephanie,Colombia,Home,Chair,490.76,3,0.2,1177.82,Debit Card
+16,2026-01-11,14,North Dalton,Colombia,Electronics,Laptop,184.17,4,0.0,736.68,Credit Card
+17,2025-11-04,8,Williamstown,Colombia,Home,Chair,332.15,4,0.2,1062.88,Cash
+18,2025-06-11,33,Nathanfort,Colombia,Clothing,Shirt,850.73,1,0.2,680.58,Cash
+19,2025-10-15,22,Port Andremouth,Colombia,Clothing,Shirt,547.11,3,0.1,1477.2,Debit Card
+20,2026-03-12,38,Lake Allisonville,Colombia,Electronics,Phone,272.55,2,0.05,517.84,Debit Card
+21,2025-12-03,8,Martinbury,Colombia,Home,Chair,979.1,3,0.05,2790.44,Debit Card
+22,2026-03-14,30,Lake Bryan,Colombia,Home,Table,634.83,2,0.0,1269.66,Debit Card
+23,2026-03-07,33,Danielhaven,Colombia,Home,Table,648.65,3,0.2,1556.76,PSE
+24,2025-07-12,19,Port Jessicachester,Colombia,Home,Table,203.29,1,0.2,162.63,Credit Card
+25,2025-10-23,17,Jasonmouth,Colombia,Home,Chair,576.28,4,0.0,2305.12,Cash
+26,2025-08-09,46,Cindyshire,Colombia,Home,Table,994.61,2,0.0,1989.22,Credit Card
+27,2025-12-09,41,Lake Alejandrostad,Colombia,Clothing,Shirt,915.72,3,0.2,2197.73,Credit Card
+28,2025-07-02,46,West Christinemouth,Colombia,Clothing,Shoes,953.54,1,0.0,953.54,Debit Card
+29,2026-03-05,33,Lake Deborahview,Colombia,Clothing,Shoes,966.99,3,0.2,2320.78,Cash
+30,2025-06-01,32,Matthewsshire,Colombia,Home,Chair,84.59,1,0.0,84.59,Credit Card
+31,2025-06-15,18,Brianaside,Colombia,Electronics,Phone,852.63,4,0.1,3069.47,Credit Card
+32,2026-01-02,3,Reginaldland,Colombia,Clothing,Shirt,561.23,3,0.05,1599.51,Cash
+33,2025-06-07,32,Port Brad,Colombia,Clothing,Shoes,574.36,4,0.05,2182.57,PSE
+34,2025-08-18,27,Singhburgh,Colombia,Electronics,Laptop,674.43,3,0.05,1922.13,Credit Card
+35,2025-05-11,40,West Cindymouth,Colombia,Home,Table,302.34,2,0.0,604.68,PSE
+36,2025-12-05,48,South Michelleberg,Colombia,Home,Chair,700.05,3,0.05,1995.14,Cash
+37,2025-09-20,26,East Theresastad,Colombia,Electronics,Phone,557.29,2,0.1,1003.12,PSE
+38,2026-03-30,13,Port Kevinland,Colombia,Clothing,Shoes,812.01,1,0.2,649.61,Credit Card
+39,2025-09-23,36,Victoriamouth,Colombia,Electronics,Laptop,90.78,3,0.0,272.34,Cash
+40,2025-12-06,46,North Richard,Colombia,Clothing,Shoes,800.31,1,0.2,640.25,Credit Card
+41,2026-01-02,23,Port Beth,Colombia,Clothing,Shirt,797.83,4,0.1,2872.19,PSE
+42,2025-10-28,32,Maryview,Colombia,Electronics,Laptop,37.34,2,0.05,70.95,Cash
+43,2025-06-23,25,Franklinburgh,Colombia,Clothing,Shirt,582.5,2,0.1,1048.5,Debit Card
+44,2025-05-22,22,East Kevinshire,Colombia,Home,Chair,163.49,2,0.0,326.98,Debit Card
+45,2025-08-27,42,East Gina,Colombia,Electronics,Laptop,594.92,2,0.0,1189.84,Cash
+46,2025-05-10,37,North Tina,Colombia,Electronics,Laptop,824.37,2,0.1,1483.87,Credit Card
+47,2025-08-02,44,Tammyhaven,Colombia,Home,Table,527.02,1,0.2,421.62,Debit Card
+48,2025-07-29,6,Terrifort,Colombia,Clothing,Shirt,965.6,3,0.2,2317.44,Cash
+49,2025-08-08,47,New Robinbury,Colombia,Electronics,Laptop,61.16,4,0.05,232.41,Credit Card
+50,2026-03-08,16,Evanston,Colombia,Home,Table,702.52,4,0.2,2248.06,Debit Card
+51,2026-01-09,30,Mcknighthaven,Colombia,Home,Table,976.09,4,0.05,3709.14,Debit Card
+52,2025-06-10,19,Sandraville,Colombia,Electronics,Phone,50.66,4,0.1,182.38,PSE
+53,2025-11-18,37,Thomasmouth,Colombia,Electronics,Phone,444.58,3,0.05,1267.05,Credit Card
+54,2026-02-26,9,Terrytown,Colombia,Electronics,Laptop,192.49,2,0.1,346.48,Credit Card
+55,2025-10-11,1,Bakerstad,Colombia,Electronics,Laptop,691.61,1,0.05,657.03,Debit Card
+56,2025-06-07,48,Port Kellie,Colombia,Electronics,Phone,447.93,4,0.05,1702.13,PSE
+57,2025-09-15,1,Lake Jeffrey,Colombia,Clothing,Shirt,191.04,1,0.0,191.04,PSE
+58,2026-02-08,5,New Patriciahaven,Colombia,Electronics,Phone,955.32,3,0.2,2292.77,Credit Card
+59,2025-12-17,12,East Carol,Colombia,Clothing,Shirt,615.6,3,0.1,1662.12,Debit Card
+60,2025-09-15,22,Smithtown,Colombia,Clothing,Shirt,570.38,3,0.0,1711.14,Credit Card
+61,2026-01-09,5,North Rhonda,Colombia,Home,Chair,24.25,2,0.2,38.8,PSE
+62,2026-01-09,5,Port Leeview,Colombia,Home,Chair,103.22,2,0.05,196.12,PSE
+63,2026-01-23,48,Lake Donaldport,Colombia,Clothing,Shoes,479.43,2,0.05,910.92,Cash
+64,2025-09-22,30,Simpsonside,Colombia,Clothing,Shirt,808.84,4,0.0,3235.36,Cash
+65,2025-10-14,5,Richardhaven,Colombia,Home,Chair,653.28,2,0.05,1241.23,PSE
+66,2025-08-16,10,South Danielle,Colombia,Electronics,Laptop,887.81,4,0.1,3196.12,Credit Card
+67,2025-07-16,1,Port Christy,Colombia,Home,Table,629.6,2,0.2,1007.36,Cash
+68,2025-05-11,16,Jerryville,Colombia,Electronics,Phone,543.98,1,0.2,435.18,Cash
+69,2025-10-18,49,Port Jay,Colombia,Home,Chair,79.86,3,0.05,227.6,Debit Card
+70,2025-05-03,20,Pearsontown,Colombia,Home,Chair,868.53,4,0.1,3126.71,Debit Card
+71,2026-01-04,33,Carlsonhaven,Colombia,Clothing,Shirt,579.72,2,0.1,1043.5,Cash
+72,2025-05-04,37,East Jasonside,Colombia,Clothing,Shirt,463.67,3,0.1,1251.91,Cash
+73,2025-06-21,40,North Anitabury,Colombia,Electronics,Phone,629.68,1,0.0,629.68,PSE
+74,2026-03-26,13,Angelicaville,Colombia,Clothing,Shirt,906.3,4,0.0,3625.2,PSE
+75,2025-04-27,50,West Arielfurt,Colombia,Clothing,Shoes,222.44,2,0.05,422.64,PSE
+76,2025-08-21,8,Ryanmouth,Colombia,Clothing,Shirt,686.18,1,0.05,651.87,Debit Card
+77,2025-09-04,34,South Lindsay,Colombia,Clothing,Shirt,391.54,2,0.05,743.93,PSE
+78,2025-04-03,50,Port Karen,Colombia,Clothing,Shoes,268.09,3,0.2,643.42,Credit Card
+79,2025-08-22,36,East Normastad,Colombia,Clothing,Shirt,632.65,1,0.2,506.12,Credit Card
+80,2026-02-28,36,Amyview,Colombia,Home,Table,423.77,1,0.0,423.77,Debit Card
+81,2025-08-21,35,New Marvinton,Colombia,Clothing,Shirt,185.67,1,0.2,148.54,Credit Card
+82,2025-12-28,18,Wardton,Colombia,Clothing,Shirt,990.6,4,0.2,3169.92,PSE
+83,2025-06-14,23,East Olivia,Colombia,Clothing,Shoes,257.52,4,0.2,824.06,PSE
+84,2025-11-11,49,Lake Leah,Colombia,Electronics,Laptop,931.45,1,0.2,745.16,Debit Card
+85,2025-12-11,35,New Edward,Colombia,Clothing,Shoes,683.05,3,0.0,2049.15,PSE
+86,2025-10-16,20,Megantown,Colombia,Electronics,Laptop,112.09,1,0.0,112.09,PSE
+87,2026-01-03,19,South Sherri,Colombia,Clothing,Shoes,828.19,2,0.0,1656.38,Credit Card
+88,2025-07-11,41,Oscarstad,Colombia,Electronics,Phone,395.31,4,0.0,1581.24,Credit Card
+89,2025-07-09,28,Phillipbury,Colombia,Electronics,Phone,848.67,1,0.1,763.8,Cash
+90,2026-02-28,19,Brianborough,Colombia,Clothing,Shirt,950.56,4,0.2,3041.79,PSE
+91,2025-08-02,5,Port Ashleystad,Colombia,Electronics,Phone,498.1,4,0.0,1992.4,Credit Card
+92,2025-05-25,21,South Johnburgh,Colombia,Clothing,Shirt,300.28,1,0.2,240.22,Cash
+93,2026-02-01,39,Kevinside,Colombia,Electronics,Laptop,754.85,3,0.2,1811.64,Credit Card
+94,2026-01-13,39,Lake Markside,Colombia,Home,Table,100.29,2,0.05,190.55,Debit Card
+95,2025-05-21,35,West Lisa,Colombia,Home,Chair,995.97,2,0.0,1991.94,Credit Card
+96,2025-12-08,18,North Thomas,Colombia,Home,Table,888.83,3,0.1,2399.84,Credit Card
+97,2026-02-05,44,Katherinemouth,Colombia,Home,Chair,968.97,1,0.05,920.52,Debit Card
+98,2025-08-16,46,Burgessbury,Colombia,Electronics,Laptop,868.2,2,0.1,1562.76,Debit Card
+99,2026-03-06,50,Lake Brandon,Colombia,Electronics,Phone,703.96,2,0.0,1407.92,Credit Card
+100,2025-12-21,29,South David,Colombia,Electronics,Laptop,892.98,2,0.0,1785.96,PSE
