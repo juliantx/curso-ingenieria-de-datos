@@ -30,6 +30,6 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      # ⚠️ Destroy
+      # Destroy
       - name: Terraform Destroy
         run: terraform destroy -auto-approve -var-file="dev.tfvars"
