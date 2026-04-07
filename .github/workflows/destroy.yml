@@ -1,5 +1,6 @@
 name: Destroy Infrastructure
 
+# No es automatico
 on:
   workflow_dispatch:
 
