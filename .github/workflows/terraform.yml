@@ -1,9 +1,9 @@
 name: Deploy Data Lake Terraform
 
-# on:
-#   push:
-#     branches:
-#       - feature/actions
+on:
+  push:
+    branches:
+      - feature/actions
 
 jobs:
   deploy:
