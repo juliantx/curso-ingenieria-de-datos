@@ -50,14 +50,9 @@ jobs:
       # Subir CSV
       - name: Upload CSV
         run: |
-          aws s3 cp ../../../../archivos_para_bronze/sales_small.csv s3://$BRONZE_BUCKET/
+          aws s3 cp infra/terraform/archivos_para_bronze/sales_small.csv s3://$BRONZE_BUCKET/
 
       # Subir script Glue
       - name: Upload Glue Script
         run: |
-          aws s3 cp ../../../../archivos_para_bronze/scripts/etl_sales.py s3://$BRONZE_BUCKET/scripts/etl_sales.py
-
-      #  Ejecutar Glue Job
-      - name: Run Glue Job
-        run: |
-          aws glue start-job-run --job-name datalake-dev-sales-etl
+          aws s3 cp infra/terraform/archivos_para_bronze//scripts/etl_sales.py s3://$BRONZE_BUCKET/scripts/etl_sales.py
