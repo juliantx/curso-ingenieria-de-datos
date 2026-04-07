@@ -36,7 +36,7 @@ https://developer.hashicorp.com/terraform/install
 
 Agregar al Path: C:\Terraform o donde tenga el ejecutable
 
-# 🧱 Estructura básica de Terraform
+# Estructura básica de Terraform
 
 Terraform utiliza archivos con extensión `.tf` para definir la infraestructura.
 
