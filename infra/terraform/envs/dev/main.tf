@@ -56,13 +56,3 @@ module "iam" {
   silver_bucket = module.silver_bucket.bucket_name
   temp_bucket   = module.bronze_bucket.bucket_name
 }
-
-module "cloudwatch" {
-  source = "../../modules/cloudwatch"
-
-  project = var.project
-  env     = var.env
-
-  glue_job_name = "${var.project}-${var.env}-sales-etl"
-  region        = "us-east-1" # ajusta si usas otra
-}
