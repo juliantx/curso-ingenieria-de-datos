@@ -1,3 +1,17 @@
+terraform {
+  backend "s3" {
+    bucket         = "datalake-terraform-state-670578095526"
+    key            = "dev/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
 data "aws_caller_identity" "current" {}
 
 module "bronze_bucket" {
@@ -55,4 +69,14 @@ module "iam" {
   bronze_bucket = module.bronze_bucket.bucket_name
   silver_bucket = module.silver_bucket.bucket_name
   temp_bucket   = module.bronze_bucket.bucket_name
+}
+
+terraform {
+  backend "s3" {
+    bucket         = "datalake-terraform-state-670578095526"
+    key            = "dev/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
 }

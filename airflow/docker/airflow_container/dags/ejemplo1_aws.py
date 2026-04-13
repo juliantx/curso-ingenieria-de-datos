@@ -22,7 +22,7 @@ with DAG(
     # Listar archivos en el bucket (capa bronze)
     list_s3_files = S3ListOperator(
         task_id="list_s3_files",
-        bucket="datalake-dev-bronze-714647503442",
+        bucket="datalake-dev-bronze-670578095526",
         prefix="",  # puedes poner algo como "sales/" si quieres filtrar
         aws_conn_id="conexion_aws"
     )

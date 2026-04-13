@@ -3,7 +3,7 @@ name: Deploy Data Lake Terraform
 on:
   push:
     branches:
-      - feature/actions
+      - feature/actions_backend
 
 jobs:
   deploy:
@@ -55,4 +55,4 @@ jobs:
       # Subir script Glue
       - name: Upload Glue Script
         run: |
-          aws s3 cp ../../archivos_para_bronze//scripts/etl_sales.py s3://$BRONZE_BUCKET/scripts/etl_sales.py
+          aws s3 cp ../../archivos_para_bronze/scripts/etl_sales.py s3://$BRONZE_BUCKET/scripts/etl_sales.py

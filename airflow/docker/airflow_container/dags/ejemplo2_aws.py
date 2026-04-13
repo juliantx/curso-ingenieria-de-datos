@@ -9,8 +9,8 @@ from datetime import datetime
 
 
 AWS_CONN_ID = "conexion_aws"
-BRONZE_BUCKET = "datalake-dev-bronze-714647503442"
-SILVER_BUCKET = "datalake-dev-silver-714647503442"
+BRONZE_BUCKET = "datalake-dev-bronze-670578095526"
+SILVER_BUCKET = "datalake-dev-silver-670578095526"
 
 
 def print_s3_files(ti):
@@ -88,7 +88,7 @@ with DAG(
             CREATE DATABASE IF NOT EXISTS datalake_db
         """,
         database="default",
-        output_location="s3://pragma-simulacion/resutados_athena/",
+        output_location="s3://demo-bucket-670578095526/resutados_athena/",
         aws_conn_id=AWS_CONN_ID
     )
 
@@ -105,10 +105,10 @@ with DAG(
             )
             PARTITIONED BY (date DATE)
             STORED AS PARQUET
-            LOCATION 's3://datalake-dev-silver-714647503442/sales/';
+            LOCATION 's3://datalake-dev-silver-670578095526/sales/';
         """,
         database="datalake_db",
-        output_location="s3://pragma-simulacion/resutados_athena/",
+        output_location="s3://demo-bucket-670578095526/resutados_athena/",
         aws_conn_id=AWS_CONN_ID
     )
 
@@ -126,7 +126,7 @@ with DAG(
             LIMIT 10
         """,
         database="datalake_db",
-        output_location="s3://pragma-simulacion/resutados_athena/",
+        output_location="s3://demo-bucket-670578095526/resutados_athena/",
         aws_conn_id=AWS_CONN_ID
     )
 
