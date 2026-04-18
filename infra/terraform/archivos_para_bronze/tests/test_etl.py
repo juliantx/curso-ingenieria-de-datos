@@ -1,5 +1,12 @@
 import pytest
 from pyspark.sql import SparkSession
+import sys
+from unittest.mock import MagicMock
+
+# Mock del módulo awsglue
+sys.modules['awsglue'] = MagicMock()
+sys.modules['awsglue.utils'] = MagicMock()
+
 from scripts.etl_sales import transform
 
 
