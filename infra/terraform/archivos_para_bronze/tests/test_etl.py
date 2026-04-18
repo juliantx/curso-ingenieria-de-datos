@@ -1,6 +1,6 @@
 import pytest
 from pyspark.sql import SparkSession
-from etl_sales import transform
+from scripts.etl_sales import transform
 
 
 @pytest.fixture(scope="session")
