@@ -25,6 +25,22 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      # PYTHON
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      # DEPENDENCIAS
+      - name: Install dependencies
+        run: |
+          pip install pytest pyspark
+
+      # RUN TESTS
+      - name: Run Tests
+        run: |
+          pytest $GITHUB_WORKSPACE/tests/
+
       # Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
