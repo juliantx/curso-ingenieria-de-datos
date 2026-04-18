@@ -39,7 +39,7 @@ jobs:
       # RUN TESTS
       - name: Run Tests
         run: |
-          pytest $GITHUB_WORKSPACE/archivos_para_bronze/tests/
+          pytest $GITHUB_WORKSPACE/infra/terraform/archivos_para_bronze/tests/
 
       # Terraform
       - name: Setup Terraform
